@@ -8,7 +8,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py .
 COPY templates/ ./templates/
 
-ENV PORT=5000
-EXPOSE 5000
+ENV PORT=8080
+ENV GUNICORN_PORT=8080
+EXPOSE 8080
 
-CMD ["python", "app.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "2", "--timeout", "120", "app:app"]
