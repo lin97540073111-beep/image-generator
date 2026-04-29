@@ -1,33 +1,11 @@
 {
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
-    "builder": "NIXPACKS",
-    "nixpacksJson": {
-      "name": "image-generation-workflow",
-      "version": "1.0.0",
-      "description": "AI Image Generation Workflow Web App",
-      "engines": {
-        "node": ">=18.0.0",
-        "python": ">=3.10.0"
-      }
-    }
+    "dockerfile": "Dockerfile"
   },
   "deploy": {
     "numInstances": 1,
     "restartPolicyType": "ON_FAILURE",
-    "restartPolicyMaxRetries": 10,
-    "runtime": {
-      "port": 5000,
-      "envVars": {
-        "PORT": {
-          "description": "The port that the service will be exposed on.",
-          "value": "5000"
-        },
-        "SECRET_KEY": {
-          "description": "Secret key for Flask sessions",
-          "generatedValue": true
-        }
-      }
-    }
+    "restartPolicyMaxRetries": 10
   }
 }
